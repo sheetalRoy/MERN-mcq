@@ -41,9 +41,30 @@ const updateQuestionBank = (req, res) => {
       });
     });
 }
+const deleteQuestion = (req, res) => {
+    const id = req.params.id;
+    QuestionModel.findByIdAndRemove(id)
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot delete!`
+        });
+      } else {
+        res.send({
+          message: "Question was deleted successfully!"
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete"
+      });
+    });
+}
 module.exports = {
     showQuestionList,
     getQuestionDetails,
     saveQuestionBank,
-    updateQuestionBank
+    updateQuestionBank,
+    deleteQuestion
 }
