@@ -5,6 +5,21 @@ const mongoose = require('mongoose');
 const questionRoutes = require('./routes/questionRoutes');
 const registrationRoutes = require('./routes/registrationRoutes');
 var cors = require('cors');
+const corsOpts = {
+  origin: '*',
+
+  methods: [
+    'GET',
+    'POST',
+  ],
+
+  allowedHeaders: [
+    'Content-Type',
+  ],
+};
+
+app.use(cors(corsOpts));
+
 // const RegistrationModel = require('./models/registrations');
 
 app.use(bodyParser.urlencoded({ extended: true }))
