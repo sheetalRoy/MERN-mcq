@@ -39,7 +39,7 @@ else
 // define a root/default route
 app.use('/api', questionRoutes);
 app.use('/api/registration', registrationRoutes);
-app.listen(3000);
+app.listen(3001);
 
 app.get('/', function(req, res) {
     res.send('Hello World')
